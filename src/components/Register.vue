@@ -36,6 +36,7 @@ export default {
       this.name = null;
       this.email = null;
       this.password = null;
+      localStorage.setItem("token", "myToken");
       this.$router.push("/");
     },
   },

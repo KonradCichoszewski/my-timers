@@ -1,7 +1,11 @@
 <template>
-  <div class="timers">
+  <div class="timers-list">
     <div>MY TIMERS</div>
-    <Timer />
+    <Timer
+      v-for="timer of $store.state.timers"
+      :key="timer.id"
+      :timer="timer"
+    />
   </div>
 </template>
 
@@ -15,7 +19,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.timers
+.timers-list
   flex-grow: 2
-  background-color: blue
+  padding: 40px
 </style>

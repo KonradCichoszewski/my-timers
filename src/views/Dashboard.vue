@@ -22,5 +22,4 @@ export default {
 .dashboard
   display: flex
   min-height: 100vh
-  background: pink
 </style>

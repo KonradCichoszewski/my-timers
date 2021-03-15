@@ -30,6 +30,7 @@ export default {
       console.log(this.email, this.password);
       this.email = null;
       this.password = null;
+      localStorage.setItem("token", "myToken");
       this.$router.push("/");
     },
   },

@@ -2,13 +2,41 @@
   <div class="create-timer">
     <div class="tile">
       <div class="header-container">
-        <div class="header">ADD NEW TIMER</div>
+        <div class="header">CREATE NEW TIMER</div>
       </div>
       <div class="field-wrapper">
         <input type="text" placeholder="My awesome timer" v-model="name" />
         <label>timer name</label>
       </div>
-      <button @click="createTimer">CREATE TIMER</button>
+      <div class="triple-input">
+        <div class="field-wrapper">
+          <input type="text" v-model="year" />
+          <label>year </label>
+        </div>
+        <div class="field-wrapper">
+          <input type="text" placeholder="01" v-model="month" />
+          <label>month</label>
+        </div>
+        <div class="field-wrapper">
+          <input type="text" placeholder="01" v-model="day" />
+          <label>day</label>
+        </div>
+      </div>
+      <div class="triple-input">
+        <div class="field-wrapper">
+          <input type="text" placeholder="00" v-model="hours" />
+          <label>hours</label>
+        </div>
+        <div class="field-wrapper">
+          <input type="text" placeholder="00" v-model="minutes" />
+          <label>minutes</label>
+        </div>
+        <div class="field-wrapper">
+          <input type="text" placeholder="00" v-model="seconds" />
+          <label>seconds</label>
+        </div>
+      </div>
+      <button @click="createTimer">ADD TIMER</button>
     </div>
   </div>
 </template>
@@ -16,14 +44,37 @@
 <script>
 export default {
   data() {
+    let date = new Date();
     return {
-      name: null,
+      name: "",
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      hours: date.getHours(),
+      minutes: date.getMinutes(),
+      seconds: date.getSeconds(),
     };
   },
   methods: {
     createTimer() {
-      console.log(this.name);
-      this.name = null;
+      this.name = this.name.trim();
+      if (this.name) {
+        this.$store.dispatch("addTimer", {
+          date: new Date(
+            this.year,
+            this.month - 1,
+            this.day,
+            this.hours,
+            this.minutes,
+            this.seconds
+          )
+            .getTime()
+            .toString()
+            .slice(0, -3),
+          title: this.name,
+        });
+      }
+      this.name = "";
     },
   },
 };
@@ -33,9 +84,8 @@ export default {
 .create-timer
   flex-grow: 1
   display: flex
+  align-items: flex-start
   justify-content: center
-  align-items: center
-  background-color: orange
   padding: 40px
 
 .tile
@@ -82,6 +132,12 @@ label
   padding: 3px 0px 20px 0px
   transition-duration: .08s
   color: #777
+
+.triple-input
+  display: flex
+  justify-content: space-around
+  & input
+    max-width: 100px
 
 button
   border: none
