@@ -1,11 +1,16 @@
 <template>
   <div id="app">
+    <OptionsBar />
     <router-view />
   </div>
 </template>
 
 <script>
+import OptionsBar from "./components/OptionsBar.vue";
 export default {
+  components: {
+    OptionsBar,
+  },
   mounted() {
     setInterval(
       () =>
@@ -20,4 +25,7 @@ export default {
 *
   margin: 0
   box-sizing: border-box
+
+#app
+  min-height: 100vh
 </style>

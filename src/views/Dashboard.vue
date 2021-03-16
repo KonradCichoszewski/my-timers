@@ -21,5 +21,4 @@ export default {
 <style lang="sass" scoped>
 .dashboard
   display: flex
-  min-height: 100vh
 </style>

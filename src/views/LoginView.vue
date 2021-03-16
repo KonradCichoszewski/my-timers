@@ -16,7 +16,6 @@ export default {
 <style lang="sass" scoped>
 .login-view
   display: flex
-  height: 100vh
   justify-content: space-evenly
   background-color: #ffffff
   background-image: linear-gradient(135deg, #ffffff 0%, #e2e2e2 100%)

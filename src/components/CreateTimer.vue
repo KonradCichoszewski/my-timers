@@ -2,41 +2,45 @@
   <div class="create-timer">
     <div class="tile">
       <div class="header-container">
-        <div class="header">CREATE NEW TIMER</div>
+        <div class="header">{{ $t("newTimer") }}</div>
       </div>
       <div class="field-wrapper">
-        <input type="text" placeholder="My awesome timer" v-model="name" />
-        <label>timer name</label>
+        <input
+          type="text"
+          :placeholder="$t('timerPlaceholder')"
+          v-model="name"
+        />
+        <label>{{ $t("timerName") }}</label>
       </div>
       <div class="triple-input">
         <div class="field-wrapper">
           <input type="text" v-model="year" />
-          <label>year </label>
+          <label>{{ $t("year") }}</label>
         </div>
         <div class="field-wrapper">
           <input type="text" placeholder="01" v-model="month" />
-          <label>month</label>
+          <label>{{ $t("month") }}</label>
         </div>
         <div class="field-wrapper">
           <input type="text" placeholder="01" v-model="day" />
-          <label>day</label>
+          <label>{{ $t("day") }}</label>
         </div>
       </div>
       <div class="triple-input">
         <div class="field-wrapper">
           <input type="text" placeholder="00" v-model="hours" />
-          <label>hours</label>
+          <label>{{ $t("hours") }}</label>
         </div>
         <div class="field-wrapper">
           <input type="text" placeholder="00" v-model="minutes" />
-          <label>minutes</label>
+          <label>{{ $t("minutes") }}</label>
         </div>
         <div class="field-wrapper">
           <input type="text" placeholder="00" v-model="seconds" />
-          <label>seconds</label>
+          <label>{{ $t("seconds") }}</label>
         </div>
       </div>
-      <button @click="createTimer">ADD TIMER</button>
+      <button @click="createTimer">{{ $t("addTimer") }}</button>
     </div>
   </div>
 </template>
@@ -72,6 +76,7 @@ export default {
             .toString()
             .slice(0, -3),
           title: this.name,
+          id: Math.floor(Math.random() * 10000),
         });
       }
       this.name = "";
@@ -98,6 +103,7 @@ export default {
   display: flex
   flex-direction: column
   transition-duration: 0.08s
+  max-width: 500px
   &:hover
     border-color: #ccc
 
@@ -135,7 +141,7 @@ label
 
 .triple-input
   display: flex
-  justify-content: space-around
+  justify-content: space-between
   & input
     max-width: 100px
 
