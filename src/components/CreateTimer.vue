@@ -87,18 +87,19 @@ export default {
 
 <style lang="sass" scoped>
 .create-timer
-  flex-grow: 1
   display: flex
   align-items: flex-start
   justify-content: center
   padding: 40px
+  width: 40vw
+  padding-top: 100px
 
 .tile
   flex-grow: 1
-  background: white
+  background-color: var(--bg)
   padding: 20px
   padding-top: 40px
-  border: 1px solid #ddd
+  border: 1px solid var(--border)
   border-radius: 5px
   display: flex
   flex-direction: column
@@ -113,7 +114,7 @@ export default {
 .header
   position: absolute
   bottom: 20px
-  background-color: yellow
+  background-color: var(--accent)
   padding: 10px 20px
   border-radius: 5px
   transform: skew(-10deg)
@@ -131,13 +132,17 @@ export default {
 input
   outline: none
   border: none
-  border-bottom: 1px solid #ddd
+  background-color: var(--bg)
+  border-bottom: 1px solid var(--border)
   transition-duration: .08s
+  color: var(--font)
+  &::placeholder
+    color: var(--font)
 
 label
   padding: 3px 0px 20px 0px
   transition-duration: .08s
-  color: #777
+  color: var(--font)
 
 .triple-input
   display: flex
@@ -148,7 +153,7 @@ label
 button
   border: none
   outline: none
-  background-color: yellow
+  background-color: var(--accent)
   padding: 10px
   cursor: pointer
   transition-duration: .08s

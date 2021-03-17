@@ -50,10 +50,10 @@ export default {
   align-items: center
 
 .tile
-  background: white
+  background-color: var(--bg)
   padding: 20px
   padding-top: 40px
-  border: 1px solid #ddd
+  border: 1px solid var(--border)
   border-radius: 5px
   display: flex
   flex-direction: column
@@ -68,7 +68,7 @@ export default {
 .header
   position: absolute
   bottom: 20px
-  background-color: yellow
+  background-color: var(--accent)
   padding: 10px 20px
   border-radius: 5px
   transform: skew(-10deg)
@@ -84,20 +84,23 @@ export default {
       color: #222
 
 input
+  background-color: var(--bg)
   outline: none
   border: none
-  border-bottom: 1px solid #ddd
+  border-bottom: 1px solid var(--border)
   transition-duration: .08s
+  &::placeholder
+    color: var(--font)
 
 label
   padding: 3px 0px 20px 0px
   transition-duration: .08s
-  color: #777
+  color: var(--font)
 
 button
   border: none
   outline: none
-  background-color: yellow
+  background-color: var(--accent)
   padding: 10px
   cursor: pointer
   transition-duration: .08s

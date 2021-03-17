@@ -4,7 +4,7 @@ Vue.use(VueI18n);
 
 const messages = {
   en: {
-    myTimers: "My timers!",
+    myTimers: "My timers",
     newTimer: "CREATE NEW TIMER",
     timerName: "timer name",
     timerPlaceholder: "My awesome timer",
@@ -22,7 +22,7 @@ const messages = {
     addTimer: "ADD TIMER",
   },
   pl: {
-    myTimers: "Moje liczniki!",
+    myTimers: "Moje liczniki",
     newTimer: "UTWÓRZ NOWY LICZNIK",
     timerName: "nazwa licznika",
     timerPlaceholder: "Mój nowy licznik",

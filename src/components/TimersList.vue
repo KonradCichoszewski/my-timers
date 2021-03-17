@@ -24,23 +24,23 @@ export default {
 
 <style lang="sass" scoped>
 .timers-list
-  flex-grow: 2
+  width: 60vw
   padding: 40px
-  max-width: 1000px
+  padding-top: 80px
 
 .title
   display: flex
   justify-content: center
   align-items: center
+  margin-bottom: 30px
   & >p
-    background-color: black
-    color: white
-    padding: 20px
-    transform: skew(-10deg)
-    border-radius: 5px
+    font-size: 40px
+    padding: 5px
+    border-bottom: 5px solid var(--accent)
+    color: var(--font)
 
 .timers-wrapper
   display: flex
   flex-wrap: wrap
-  justify-content: space-between
+  justify-content: space-around
 </style>

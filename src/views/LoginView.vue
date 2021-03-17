@@ -17,6 +17,5 @@ export default {
 .login-view
   display: flex
   justify-content: space-evenly
-  background-color: #ffffff
-  background-image: linear-gradient(135deg, #ffffff 0%, #e2e2e2 100%)
+  height: 100vh
 </style>

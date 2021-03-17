@@ -1,6 +1,6 @@
 <template>
   <div class="options-bar">
-    <div class="skins"></div>
+    <ColorThemes />
     <div class="flags">
       <div class="flag polish" @click="changeLocale('pl')" />
       <div class="flag english" @click="changeLocale('en')" />
@@ -10,9 +10,13 @@
 
 <script>
 import i18n from "@/plugins/i18n.js";
+import ColorThemes from "@/components/ColorThemes.vue";
 
 export default {
   name: "OptionsBar",
+  components: {
+    ColorThemes,
+  },
   methods: {
     changeLocale(locale) {
       i18n.locale = locale;
@@ -25,10 +29,15 @@ export default {
 .options-bar
   width: 100%
   height: 40px
-  position: absolute
-  background-color: #00000011
+  position: fixed
+  background-color: var(--nav)
   display: flex
   justify-content: space-between
+  transition-duration: .3s
+  z-index: 1
+  &:hover
+    background-color: var(--navHover)
+    height: 60px
 
 .flags
   display: flex
