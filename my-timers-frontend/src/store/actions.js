@@ -2,7 +2,6 @@ import axios from "axios";
 
 const actions = {
   addTimer({ commit }, { date, title, token }) {
-    console.log(date, title, token);
     axios
       .post(
         "http://localhost:8000/timer/",
