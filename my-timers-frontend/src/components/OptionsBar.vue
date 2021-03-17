@@ -26,6 +26,7 @@ export default {
   methods: {
     changeLocale(locale) {
       i18n.locale = locale;
+      this.$store.commit("setLanguage", locale);
     },
   },
 };

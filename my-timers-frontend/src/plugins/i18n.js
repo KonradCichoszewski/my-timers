@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import store from "@/store";
 Vue.use(VueI18n);
 
 const messages = {
@@ -20,6 +21,13 @@ const messages = {
     seconds: "seconds",
     noOfSeconds: "seconds",
     addTimer: "ADD TIMER",
+    register: "REGISTER",
+    name: "name",
+    email: "email",
+    password: "password",
+    createAccount: "CREATE ACCOUNT",
+    login: "LOGIN",
+    submit: "SUBMIT",
   },
   pl: {
     myTimers: "Moje liczniki",
@@ -37,11 +45,18 @@ const messages = {
     seconds: "sekundy",
     noOfSeconds: "sekund",
     addTimer: "DODAJ LICZNIK",
+    register: "REJESTRACJA",
+    name: "imię",
+    email: "email",
+    password: "hasło",
+    createAccount: "UTWÓRZ KONTO",
+    login: "LOGOWANIE",
+    submit: "ZALOGUJ SIĘ",
   },
 };
 
 const i18n = new VueI18n({
-  locale: "en", // set locale
+  locale: store.state.language || "en", // set locale
   fallbackLocale: "pl", // set fallback locale
   messages, // set locale messages
 });

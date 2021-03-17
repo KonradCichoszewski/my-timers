@@ -54,5 +54,5 @@ export default {
 
 #app
   min-height: 100vh
-  background-color: var(--bg)
+  background-image: var(--bgImage)
 </style>

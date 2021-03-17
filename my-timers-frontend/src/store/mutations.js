@@ -26,6 +26,9 @@ const mutations = {
   logout(state) {
     state.token = null;
   },
+  setLanguage(state, language) {
+    state.language = language;
+  },
 };
 
 export default mutations;

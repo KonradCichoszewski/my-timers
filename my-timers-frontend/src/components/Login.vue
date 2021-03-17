@@ -2,17 +2,17 @@
   <div class="login">
     <div class="tile">
       <div class="header-container">
-        <div class="header">LOGIN</div>
+        <div class="header">{{ $t("login") }}</div>
       </div>
       <div class="field-wrapper">
         <input type="text" placeholder="johnny123@domain.com" v-model="email" />
-        <label>email</label>
+        <label>{{ $t("email") }}</label>
       </div>
       <div class="field-wrapper">
         <input type="password" placeholder="iamdaboss" v-model="password" />
-        <label>password</label>
+        <label>{{ $t("password") }}</label>
       </div>
-      <button @click="handleLogin">LOGIN</button>
+      <button @click="handleLogin">{{ $t("submit") }}</button>
     </div>
   </div>
 </template>
@@ -85,6 +85,7 @@ input
 	border: none
 	border-bottom: 1px solid var(--border)
 	transition-duration: .08s
+	color: var(--font)
 	&::placeholder
 		color: var(--font)
 

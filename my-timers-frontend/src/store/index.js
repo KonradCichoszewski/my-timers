@@ -12,6 +12,7 @@ export default new Vuex.Store({
     currentTime: Date.now(),
     token: null,
     user: null,
+    language: "en",
     colorTheme: [
       { name: "--bg", value: "#fff" },
       { name: "--accent", value: "yellow" },
