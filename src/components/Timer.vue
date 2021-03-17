@@ -1,5 +1,13 @@
 <template>
-  <div class="timer" @click="$store.dispatch('deleteTimer', timer.id)">
+  <div
+    class="timer"
+    @click="
+      $store.dispatch('deleteTimer', {
+        timerId: timer.id,
+        token: $store.state.token,
+      })
+    "
+  >
     <div class="title">{{ timer.title }}</div>
     <div class="delete"></div>
     <div class="clock">
@@ -111,7 +119,7 @@ export default {
   height: 40px
   width: 40px
   position: absolute
-  background-image: url("")
+  // background-image: url("")
   right: -50px
   top: 20px
   border-radius: 3px

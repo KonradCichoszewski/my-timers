@@ -4,6 +4,12 @@
     <div class="flags">
       <div class="flag polish" @click="changeLocale('pl')" />
       <div class="flag english" @click="changeLocale('en')" />
+      <button
+        @click="() => this.$store.dispatch('logout')"
+        v-if="this.$store.state.token"
+      >
+        Logout
+      </button>
     </div>
   </div>
 </template>

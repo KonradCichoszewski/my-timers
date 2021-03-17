@@ -17,27 +17,39 @@
         <label>password</label>
       </div>
       <button @click="register">CREATE ACCOUNT</button>
+      <p>{{ message }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       name: "",
       email: "",
       password: "",
+      message: "",
     };
   },
   methods: {
     register() {
-      console.log(this.name, this.email, this.password);
+      axios
+        .post("http://localhost:8000/user/register/", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          this.message = res.data.message;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       this.name = null;
       this.email = null;
       this.password = null;
-      localStorage.setItem("token", "myToken");
-      this.$router.push("/");
     },
   },
 };

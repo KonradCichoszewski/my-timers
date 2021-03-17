@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import Dashboard from "../views/Dashboard.vue";
+import store from "@/store/index.js";
 
 Vue.use(VueRouter);
 
@@ -16,7 +17,7 @@ const routes = [
     name: "LoginView",
     component: LoginView,
     beforeEnter: (to, from, next) => {
-      if (localStorage.getItem("token")) {
+      if (store.state.token) {
         next({ name: "Dashboard" });
       } else next();
     },
@@ -34,7 +35,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!localStorage.getItem("token") && to.name !== "LoginView") {
+  if (!store.state.token && to.name !== "LoginView") {
     next({ name: "LoginView" });
   } else next();
 });

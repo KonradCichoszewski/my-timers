@@ -64,19 +64,18 @@ export default {
       this.name = this.name.trim();
       if (this.name) {
         this.$store.dispatch("addTimer", {
-          date: new Date(
-            this.year,
-            this.month - 1,
-            this.day,
-            this.hours,
-            this.minutes,
-            this.seconds
-          )
-            .getTime()
-            .toString()
-            .slice(0, -3),
+          date: Math.floor(
+            new Date(
+              this.year,
+              this.month - 1,
+              this.day,
+              this.hours,
+              this.minutes,
+              this.seconds
+            ).getTime() / 1000
+          ),
           title: this.name,
-          id: Math.floor(Math.random() * 10000),
+          token: this.$store.state.token,
         });
       }
       this.name = "";

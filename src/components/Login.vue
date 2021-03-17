@@ -27,11 +27,12 @@ export default {
   },
   methods: {
     handleLogin() {
-      console.log(this.email, this.password);
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+      });
       this.email = null;
       this.password = null;
-      localStorage.setItem("token", "myToken");
-      this.$router.push("/");
     },
   },
 };

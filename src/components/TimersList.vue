@@ -4,6 +4,7 @@
       <p>{{ $t("myTimers") }}</p>
     </div>
     <div class="timers-wrapper">
+      <p v-if="!$store.state.timers.length">You don't have any timers yet!</p>
       <Timer
         v-for="timer of $store.state.timers"
         :key="timer.id"
@@ -18,6 +19,9 @@ import Timer from "@/components/Timer.vue";
 export default {
   components: {
     Timer,
+  },
+  mounted() {
+    this.$store.dispatch("fetchTimers", this.$store.state.token);
   },
 };
 </script>

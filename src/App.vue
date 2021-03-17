@@ -15,6 +15,9 @@ export default {
     colorTheme() {
       return this.$store.state.colorTheme;
     },
+    loggedIn() {
+      return Boolean(this.$store.state.token);
+    },
   },
   mounted() {
     setInterval(
@@ -29,6 +32,11 @@ export default {
     });
   },
   watch: {
+    loggedIn() {
+      if (this.loggedIn) {
+        this.$router.push("/");
+      } else this.$router.push("/login");
+    },
     colorTheme() {
       let app = document.getElementById("app");
       this.$store.state.colorTheme.forEach((property) => {

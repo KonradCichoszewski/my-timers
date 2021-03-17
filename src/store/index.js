@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import actions from "./actions";
+import mutations from "./mutations";
 import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
@@ -8,6 +10,8 @@ export default new Vuex.Store({
   state: {
     timers: [],
     currentTime: Date.now(),
+    token: null,
+    user: null,
     colorTheme: [
       { name: "--bg", value: "#fff" },
       { name: "--accent", value: "yellow" },
@@ -24,36 +28,7 @@ export default new Vuex.Store({
     ],
   },
   plugins: [createPersistedState()],
-  mutations: {
-    addTimer(state, name) {
-      state.timers.push(name);
-    },
-    updateTime(state, time) {
-      state.currentTime = time;
-    },
-    deleteTimer(state, timerId) {
-      let index = state.timers.findIndex((timer) => {
-        return timer.id == timerId;
-      });
-      state.timers.splice(index, 1);
-    },
-    updateTheme(state, colorTheme) {
-      state.colorTheme = colorTheme;
-    },
-  },
-  actions: {
-    addTimer({ commit }, name) {
-      commit("addTimer", name);
-    },
-    updateTime({ commit }, time) {
-      commit("updateTime", time);
-    },
-    deleteTimer({ commit }, timerId) {
-      commit("deleteTimer", timerId);
-    },
-    updateTheme({ commit }, colorTheme) {
-      commit("updateTheme", colorTheme);
-    },
-  },
+  mutations,
+  actions,
   modules: {},
 });
