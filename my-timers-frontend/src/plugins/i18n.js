@@ -28,6 +28,13 @@ const messages = {
     createAccount: "CREATE ACCOUNT",
     login: "LOGIN",
     submit: "SUBMIT",
+    noTimers: "You don't have any timers yet !",
+    welcome: `Welcome to "my-timers"`,
+    tooLong: "Title can have at most 40 characters",
+    smallDate: "Date and time must be greater than current date",
+    regSuccess: "Registration successfull. You can log in now",
+    regErr: `Email domain must be "@gmail.com" or "@outlook.com". Password must have at least 5 characters`,
+    loginErr: "Email or password is incorrect",
   },
   pl: {
     myTimers: "Moje liczniki",
@@ -52,6 +59,13 @@ const messages = {
     createAccount: "UTWÓRZ KONTO",
     login: "LOGOWANIE",
     submit: "ZALOGUJ SIĘ",
+    noTimers: "Nie masz jeszcze żadnych liczników !",
+    welcome: `Witamy w "my-timers"`,
+    tooLong: "Nazwa licznika nie może być dłuższa niż 40 znaków",
+    smallDate: "Data i godzina muszą być późniejsze niż aktualne ",
+    regSuccess: "Rejestracja przebiegła pomyślnie. Możesz się zalogować",
+    regErr: `Email musi być w domenie "@gmail.com" lub "@outlook.com". Hasło musi mieć min. 5 znaków`,
+    loginErr: "Email lub hasło są niepoprawne",
   },
 };
 

@@ -51,8 +51,11 @@ export default {
 *
   margin: 0
   box-sizing: border-box
+  font-family: 'Dosis', sans-serif
+  letter-spacing: 2px
 
 #app
   min-height: 100vh
+  min-width: 300px
   background-image: var(--bgImage)
 </style>

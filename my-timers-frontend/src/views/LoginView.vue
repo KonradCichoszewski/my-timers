@@ -1,7 +1,10 @@
 <template>
   <div class="login-view">
-    <Register />
-    <Login />
+    <h1 class="title">{{ $t("welcome") }}</h1>
+    <div class="tiles">
+      <Register />
+      <Login />
+    </div>
   </div>
 </template>
 
@@ -18,4 +21,20 @@ export default {
   display: flex
   justify-content: space-evenly
   height: 100vh
+  flex-direction: column
+  align-items: center
+
+.tiles
+  display: flex
+  width: 100%
+  justify-content: space-evenly
+  max-width: 1300px
+
+.title
+  color: var(--font)
+  font-size: 3em
+
+@media screen and (max-width: 700px)
+  .tiles
+    flex-direction: column
 </style>

@@ -81,8 +81,11 @@ export default {
   },
   watch: {
     timeLeft() {
-      if (this.timeLeft <= -3) {
-        this.$store.dispatch("deleteTimer", this.timer.id);
+      if (this.timeLeft <= -2) {
+        this.$store.dispatch("deleteTimer", {
+          id: this.timer.id,
+          token: this.$store.state.token,
+        });
       }
     },
   },
@@ -114,6 +117,8 @@ export default {
   padding: 5px 15px
   background: var(--accent)
   transform: skew(-10deg)
+  color: var(--font)
+  border-radius: 5px
 
 .delete
   height: 40px

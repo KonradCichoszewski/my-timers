@@ -17,7 +17,8 @@
         <label>{{ $t("password") }}</label>
       </div>
       <button @click="register">{{ $t("createAccount") }}</button>
-      <p>{{ message }}</p>
+      <p class="info" id="reg-info" v-if="message">{{ $t("regSuccess") }}</p>
+      <p class="err" v-if="err">{{ $t("regErr") }}</p>
     </div>
   </div>
 </template>
@@ -30,7 +31,8 @@ export default {
       name: "",
       email: "",
       password: "",
-      message: "",
+      message: false,
+      err: false,
     };
   },
   methods: {
@@ -42,14 +44,32 @@ export default {
           password: this.password,
         })
         .then((res) => {
-          this.message = res.data.message;
+          console.log(res.data);
+          this.message = true;
         })
         .catch((err) => {
           console.log(err);
+          this.err = true;
         });
       this.name = null;
       this.email = null;
       this.password = null;
+    },
+  },
+  watch: {
+    message() {
+      if (this.message) {
+        setTimeout(() => {
+          this.message = false;
+        }, 4000);
+      }
+    },
+    err() {
+      if (this.err) {
+        setTimeout(() => {
+          this.err = false;
+        }, 4000);
+      }
     },
   },
 };
@@ -62,7 +82,7 @@ export default {
   align-items: center
 
 .tile
-  background-color: var(--bg)
+  background-color: transparent
   padding: 20px
   padding-top: 40px
   border: 1px solid var(--border)
@@ -70,6 +90,8 @@ export default {
   display: flex
   flex-direction: column
   transition-duration: 0.08s
+  position: relative
+
   &:hover
     transform: scale(1.1)
     border-color: #ccc
@@ -84,6 +106,7 @@ export default {
   padding: 10px 20px
   border-radius: 5px
   transform: skew(-10deg)
+  color: var(--font)
 
 .field-wrapper
   display: flex
@@ -93,10 +116,10 @@ export default {
   &:hover
     > label
       transform: translateX(5px)
-      color: #222
+      color: var(--accent)
 
 input
-  background-color: var(--bg)
+  background-color: transparent
   outline: none
   border: none
   border-bottom: 1px solid var(--border)
@@ -118,6 +141,28 @@ button
   cursor: pointer
   transition-duration: .08s
   border-radius: 5px
+  color: var(--font)
   &:hover
     transform: scale(1.02, 1.02)
+
+.info
+  position: absolute
+  bottom: -90px
+  left: 0
+  color: #5f5
+  width: 100%
+  padding: 10px
+  border-radius: 5px
+  background-color: transparent
+
+.err
+  position: absolute
+  bottom: -120px
+  left: 0
+  background-color: #eeffee
+  color: red
+  width: 100%
+  padding: 10px
+  border-radius: 5px
+  background-color: transparent
 </style>

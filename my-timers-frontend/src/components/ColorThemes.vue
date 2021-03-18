@@ -46,7 +46,7 @@ export default {
               value:
                 "radial-gradient(circle at 76.71% 34.58%, #222336 0, #000022 50%, #000010 100%)",
             },
-            { name: "--accent", value: "orange" },
+            { name: "--accent", value: "#c00" },
             { name: "--font", value: "#fff" },
             { name: "--nav", value: "#ffffff11" },
             { name: "--navHover", value: "#ffffff33" },
@@ -60,45 +60,23 @@ export default {
           ],
         },
         {
-          themeName: "blueTheme",
+          themeName: "greenTheme",
           colorTheme: [
             { name: "--bg", value: "#88bbff" },
             {
               name: "--bgImage",
               value:
-                "radial-gradient(circle at 68.26% 28.24%, #a7ffff 0, #7fe8ff 25%, #45ccf0 50%, #00b1dd 75%, #009ace 100%)",
+                "radial-gradient(circle at 87.5% 12.5%, #b1e357 0, #9ade5e 10%, #82d864 20%, #68d06a 30%, #4cc56e 40%, #28b971 50%, #00ac73 60%, #00a175 70%, #009877 80%, #008f7a 90%, #00897d 100%)",
             },
-            { name: "--accent", value: "white" },
-            { name: "--font", value: "#000088" },
+            { name: "--accent", value: "#000022" },
+            { name: "--font", value: "#ffffff" },
             { name: "--nav", value: "#00000010" },
             { name: "--navHover", value: "#00000033" },
             { name: "--border", value: "#ddd" },
             { name: "--borderDelete", value: "red" },
             { name: "--bgDelete", value: "#ff00000e" },
             { name: "--timerShadow", value: "#00000022" },
-            { name: "--digitBg", value: "#000" },
-            { name: "--digitFont", value: "#fff" },
-            { name: "--", value: "" },
-          ],
-        },
-        {
-          themeName: "redTheme",
-          colorTheme: [
-            { name: "--bg", value: "#88bbff" },
-            {
-              name: "--bgImage",
-              value:
-                "radial-gradient(circle at 78.37% 16.19%, #f1a240 0, #f79840 7.14%, #fc8d42 14.29%, #ff8045 21.43%, #ff7248 28.57%, #ff624d 35.71%, #ff4f52 42.86%, #ff3858 50%, #fb155f 57.14%, #f60068 64.29%, #ef0073 71.43%, #e6007e 78.57%, #dc008b 85.71%, #d00099 92.86%, #c100a7 100%)",
-            },
-            { name: "--accent", value: "white" },
-            { name: "--font", value: "#000088" },
-            { name: "--nav", value: "#00000010" },
-            { name: "--navHover", value: "#00000033" },
-            { name: "--border", value: "#ddd" },
-            { name: "--borderDelete", value: "red" },
-            { name: "--bgDelete", value: "#ff00000e" },
-            { name: "--timerShadow", value: "#00000022" },
-            { name: "--digitBg", value: "#000" },
+            { name: "--digitBg", value: "#002" },
             { name: "--digitFont", value: "#fff" },
             { name: "--", value: "" },
           ],
@@ -132,9 +110,6 @@ export default {
 .darkTheme
   background-image: linear-gradient(220deg, #53519a 0, #262c5c 25%, #000022 50%, #000000 75%, #000000 100%)
 
-.blueTheme
-  background-image: radial-gradient(circle at 68.26% 28.24%, #a7ffff 0, #7fe8ff 25%, #45ccf0 50%, #00b1dd 75%, #009ace 100%)
-
-.redTheme
-  background-image: radial-gradient(circle at 78.37% 16.19%, #f1a240 0, #f79840 7.14%, #fc8d42 14.29%, #ff8045 21.43%, #ff7248 28.57%, #ff624d 35.71%, #ff4f52 42.86%, #ff3858 50%, #fb155f 57.14%, #f60068 64.29%, #ef0073 71.43%, #e6007e 78.57%, #dc008b 85.71%, #d00099 92.86%, #c100a7 100%)
+.greenTheme
+  background-image: radial-gradient(circle at 87.5% 12.5%, #b1e357 0, #9ade5e 10%, #82d864 20%, #68d06a 30%, #4cc56e 40%, #28b971 50%, #00ac73 60%, #00a175 70%, #009877 80%, #008f7a 90%, #00897d 100%)
 </style>

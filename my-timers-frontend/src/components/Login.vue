@@ -13,24 +13,45 @@
         <label>{{ $t("password") }}</label>
       </div>
       <button @click="handleLogin">{{ $t("submit") }}</button>
+      <p class="err" v-if="err">{{ $t("loginErr") }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       email: null,
       password: null,
+      err: false,
     };
+  },
+  watch: {
+    err() {
+      if (this.err) {
+        setTimeout(() => {
+          this.err = false;
+        }, 4000);
+      }
+    },
   },
   methods: {
     handleLogin() {
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password,
-      });
+      axios
+        .post("http://localhost:8000/user/login/", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          this.$store.commit("setToken", res.data.token);
+        })
+        .catch((err) => {
+          console.log(err);
+          this.err = true;
+        });
       this.email = null;
       this.password = null;
     },
@@ -53,7 +74,8 @@ export default {
 	display: flex
 	flex-direction: column
 	transition-duration: 0.08s
-	background-color: var(--bg)
+	background-color: transparent
+	position: relative
 	&:hover
 		transform: scale(1.1)
 		border-color: #ccc
@@ -68,6 +90,7 @@ export default {
 	padding: 10px 20px
 	border-radius: 5px
 	transform: skew(-10deg)
+	color: var(--font)
 
 .field-wrapper
 	display: flex
@@ -77,10 +100,10 @@ export default {
 	&:hover
 		> label
 			transform: translateX(5px)
-			color: #222
+			color: var(--accent)
 
 input
-	background-color: var(--bg)
+	background-color: transparent
 	outline: none
 	border: none
 	border-bottom: 1px solid var(--border)
@@ -102,6 +125,18 @@ button
 	cursor: pointer
 	transition-duration: .08s
 	border-radius: 5px
+	color: var(--font)
 	&:hover
 		transform: scale(1.02, 1.02)
+
+.err
+	position: absolute
+	bottom: -70px
+	left: 0
+	background-color: #eeffee
+	color: red
+	width: 100%
+	padding: 10px
+	border-radius: 5px
+	background-color: transparent
 </style>

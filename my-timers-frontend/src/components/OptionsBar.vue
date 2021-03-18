@@ -5,6 +5,7 @@
       <div class="flag polish" @click="changeLocale('pl')" />
       <div class="flag english" @click="changeLocale('en')" />
       <button
+        class="logout"
         @click="() => this.$store.dispatch('logout')"
         v-if="this.$store.state.token"
       >
@@ -59,6 +60,18 @@ export default {
   cursor: pointer
   transition-duration: 0.08s
   margin: 0 5px
+  &:hover
+    opacity: 0.8
+    transform: scale(1.05)
+
+.logout
+  background-color: var(--accent)
+  padding: 7px 10px
+  color: var(--font)
+  border-radius: 5px
+  border: none
+  cursor: pointer
+  transition-duration: 0.08s
   &:hover
     opacity: 0.8
     transform: scale(1.05)

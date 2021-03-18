@@ -37,10 +37,26 @@ exports.getTimers = async (req, res, next) => {
 
 exports.deleteTimer = async (req, res, next) => {
   const { id } = req.body;
-  const timer = await Timer.findOneAndDelete({ _id: id });
+  let timer = await Timer.findOneAndDelete({ id: id });
 
-  res.json({
-    message: "Timer deleted",
-    timer,
-  });
+  if (timer) {
+    res.json({
+      message: "Timer deleted",
+      timer,
+    });
+  } else {
+    timer = await Timer.findOneAndDelete({ _id: id });
+
+    if (timer) {
+      res.json({
+        message: "Timer deleted",
+        timer,
+      });
+    } else {
+      res.json({
+        message: "Timer not found",
+        timer: { _id: null },
+      });
+    }
+  }
 };

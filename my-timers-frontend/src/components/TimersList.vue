@@ -4,7 +4,9 @@
       <p>{{ $t("myTimers") }}</p>
     </div>
     <div class="timers-wrapper">
-      <p v-if="!$store.state.timers.length">You don't have any timers yet!</p>
+      <p class="no-timers" v-if="!$store.state.timers.length">
+        {{ $t("noTimers") }}
+      </p>
       <Timer
         v-for="timer of $store.state.timers"
         :key="timer.id"
@@ -47,4 +49,7 @@ export default {
   display: flex
   flex-wrap: wrap
   justify-content: space-around
+
+.no-timers
+  color: var(--font)
 </style>
