@@ -7,11 +7,7 @@
       <p class="no-timers" v-if="!$store.state.timers.length">
         {{ $t("noTimers") }}
       </p>
-      <Timer
-        v-for="timer of $store.state.timers"
-        :key="timer.id"
-        :timer="timer"
-      />
+      <Timer v-for="timer of timers" :key="timer.id" :timer="timer" />
     </div>
   </div>
 </template>
@@ -21,6 +17,13 @@ import Timer from "@/components/Timer.vue";
 export default {
   components: {
     Timer,
+  },
+  computed: {
+    timers() {
+      let timers = [...this.$store.state.timers];
+      timers.reverse();
+      return timers;
+    },
   },
   mounted() {
     this.$store.dispatch("fetchTimers", this.$store.state.token);

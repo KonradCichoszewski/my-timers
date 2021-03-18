@@ -158,7 +158,8 @@ export default {
   flex-direction: column
   transition-duration: 0.08s
   max-width: 500px
-  position: relative
+  position: sticky
+  top: 100px
   &:hover
     border-color: #ccc
 
