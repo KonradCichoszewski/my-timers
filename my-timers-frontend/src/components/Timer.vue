@@ -1,13 +1,5 @@
 <template>
-  <div
-    class="timer"
-    @click="
-      $store.dispatch('deleteTimer', {
-        timerId: timer.id,
-        token: $store.state.token,
-      })
-    "
-  >
+  <div class="timer" @click="deleteTimer">
     <div class="title">{{ timer.title }}</div>
     <div class="delete"></div>
     <div class="clock">
@@ -81,12 +73,20 @@ export default {
   },
   watch: {
     timeLeft() {
-      if (this.timeLeft <= -2) {
-        this.$store.dispatch("deleteTimer", {
-          id: this.timer.id,
-          token: this.$store.state.token,
-        });
+      if (this.timeLeft <= -1) this.deleteTimer();
+    },
+  },
+  methods: {
+    deleteTimer() {
+      let timers = JSON.parse(localStorage.getItem("timers"));
+      let index = timers.findIndex((timer) => timer.id == this.timer.id);
+      timers.splice(index, 1);
+      if (!timers.length) {
+        localStorage.removeItem("timers");
+      } else {
+        localStorage.setItem("timers", JSON.stringify(timers));
       }
+      this.$emit("timers-changed");
     },
   },
 };

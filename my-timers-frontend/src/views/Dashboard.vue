@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
-    <TimersList />
-    <CreateTimer />
+    <TimersList :timers="timers" @timers-changed="fetchTimers" />
+    <CreateTimer @timers-changed="fetchTimers" />
   </div>
 </template>
 
@@ -14,6 +14,16 @@ export default {
   components: {
     CreateTimer,
     TimersList,
+  },
+  data() {
+    return {
+      timers: JSON.parse(localStorage.getItem("timers")) || undefined,
+    };
+  },
+  methods: {
+    fetchTimers() {
+      this.timers = JSON.parse(localStorage.getItem("timers"));
+    },
   },
 };
 </script>

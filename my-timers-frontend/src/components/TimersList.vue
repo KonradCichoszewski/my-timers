@@ -4,10 +4,16 @@
       <p>{{ $t("myTimers") }}</p>
     </div>
     <div class="timers-wrapper">
-      <p class="no-timers" v-if="!$store.state.timers.length">
+      <p class="no-timers" v-if="!(timers instanceof Array)">
         {{ $t("noTimers") }}
       </p>
-      <Timer v-for="timer of timers" :key="timer.id" :timer="timer" />
+      <Timer
+        v-else
+        v-for="timer of reversedTimers"
+        :key="timer.id"
+        :timer="timer"
+        @timers-changed="$emit('timers-changed')"
+      />
     </div>
   </div>
 </template>
@@ -18,16 +24,18 @@ export default {
   components: {
     Timer,
   },
+  props: ["timers"],
   computed: {
-    timers() {
-      let timers = [...this.$store.state.timers];
-      timers.reverse();
-      return timers;
+    reversedTimers() {
+      let timersCopy = this.timers;
+      return timersCopy.reverse();
     },
   },
-  mounted() {
-    this.$store.dispatch("fetchTimers", this.$store.state.token);
-  },
+  // Commented out on request to detach frontend from backend
+
+  // mounted() {
+  //   this.$store.dispatch("fetchTimers", this.$store.state.token);
+  // },
 };
 </script>
 

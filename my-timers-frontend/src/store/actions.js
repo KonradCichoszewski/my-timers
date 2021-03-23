@@ -1,28 +1,34 @@
 import axios from "axios";
 
 const actions = {
-  addTimer({ commit }, { date, title, token }) {
-    axios
-      .post(
-        "http://localhost:8000/timer/",
-        { title, timestamp: date },
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      )
-      .then((res) => {
-        let timer = res.data.timer;
-        commit("addTimer", {
-          date: timer.timestamp,
-          title: timer.title,
-          id: timer._id,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  addTimer({ commit }, { date, title, id }) {
+    // API call commented out on request to detach frontend from backend
+    // axios
+    //   .post(
+    //     "http://localhost:8000/timer/",
+    //     { title, timestamp: date },
+    //     {
+    //       headers: {
+    //         Authorization: "Bearer " + token,
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     let timer = res.data.timer;
+    //     commit("addTimer", {
+    //       date: timer.timestamp,
+    //       title: timer.title,
+    //       id: timer._id,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    commit("addTimer", {
+      date,
+      title,
+      id,
+    });
   },
   updateTime({ commit }, time) {
     commit("updateTime", time);

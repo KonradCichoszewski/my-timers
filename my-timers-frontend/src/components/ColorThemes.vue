@@ -21,8 +21,7 @@ export default {
             { name: "--bg", value: "#fff" },
             {
               name: "--bgImage",
-              value:
-                "radial-gradient(circle at 73.1% 9.99%, #ffffff 0, #ffffff 25%, #ffffff 50%, #f4ecef 75%, #eadde2 100%)",
+              value: "linear-gradient(#fff, #fff)",
             },
             { name: "--accent", value: "yellow" },
             { name: "--font", value: "#000" },

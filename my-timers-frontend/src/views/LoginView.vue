@@ -29,10 +29,12 @@ export default {
   width: 100%
   justify-content: space-evenly
   max-width: 1300px
+  transform: translateY(0vh)
 
 .title
   color: var(--font)
   font-size: 3em
+  transform: translateY(0vh)
 
 @media screen and (max-width: 700px)
   .tiles

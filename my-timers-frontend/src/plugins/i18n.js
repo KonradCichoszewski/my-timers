@@ -35,6 +35,10 @@ const messages = {
     regSuccess: "Registration successfull. You can log in now",
     regErr: `Email domain must be "@gmail.com" or "@outlook.com". Password must have at least 5 characters`,
     loginErr: "Email or password is incorrect",
+    regAttempt:
+      "Registration disabled on request to detach frontend from backend",
+    wrongCredentials: "email: admin@admin.com\npassword: admin",
+    noTitle: "No title",
   },
   pl: {
     myTimers: "Moje liczniki",
@@ -66,6 +70,10 @@ const messages = {
     regSuccess: "Rejestracja przebiegła pomyślnie. Możesz się zalogować",
     regErr: `Email musi być w domenie "@gmail.com" lub "@outlook.com". Hasło musi mieć min. 5 znaków`,
     loginErr: "Email lub hasło są niepoprawne",
+    regAttempt:
+      "Rejestracja wyłączona na prośbę o odłączenie frontendu od backendu",
+    wrongCredentials: "email: admin@admin.com\nhasło: admin",
+    noTitle: "Bez tytułu",
   },
 };
 

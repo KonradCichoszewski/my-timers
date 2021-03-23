@@ -1,4 +1,5 @@
 <template>
+  <!-- component disabled on request to detach frontend from backend -->
   <div class="register">
     <div class="tile">
       <div class="header-container">
@@ -13,18 +14,28 @@
         <label>{{ $t("email") }}</label>
       </div>
       <div class="field-wrapper">
-        <input type="password" placeholder="iamdaboss" v-model="password" />
+        <input
+          type="password"
+          placeholder="iamdaboss"
+          v-model="password"
+          @keydown="checkEnter"
+        />
         <label>{{ $t("password") }}</label>
       </div>
-      <button @click="register">{{ $t("createAccount") }}</button>
-      <p class="info" id="reg-info" v-if="message">{{ $t("regSuccess") }}</p>
+      <button @click="register">
+        {{ $t("createAccount") }}
+      </button>
+      <p class="info" v-if="message">{{ $t("regSuccess") }}</p>
       <p class="err" v-if="err">{{ $t("regErr") }}</p>
+      <p class="err" v-if="registerAttempt">{{ $t("regAttempt") }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+// axios import commented out on request to detach frontend from backend
+// import axios from "axios";
+
 export default {
   data() {
     return {
@@ -33,27 +44,34 @@ export default {
       password: "",
       message: false,
       err: false,
+      registerAttempt: false,
     };
   },
   methods: {
     register() {
-      axios
-        .post("http://localhost:8000/user/register/", {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.message = true;
-        })
-        .catch((err) => {
-          console.log(err);
-          this.err = true;
-        });
+      // API call commented out on request to detach frontend from backend
+
+      // axios
+      //   .post("http://localhost:8000/user/register/", {
+      //     name: this.name,
+      //     email: this.email,
+      //     password: this.password,
+      //   })
+      //   .then((res) => {
+      //     console.log(res.data);
+      //     this.message = true;
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     this.err = true;
+      //   });
+      this.registerAttempt = true;
       this.name = null;
       this.email = null;
       this.password = null;
+    },
+    checkEnter(e) {
+      if (e.key === "Enter" || e.keyCode === 13) this.register();
     },
   },
   watch: {
@@ -68,6 +86,13 @@ export default {
       if (this.err) {
         setTimeout(() => {
           this.err = false;
+        }, 4000);
+      }
+    },
+    registerAttempt() {
+      if (this.registerAttempt) {
+        setTimeout(() => {
+          this.registerAttempt = false;
         }, 4000);
       }
     },
@@ -91,7 +116,7 @@ export default {
   flex-direction: column
   transition-duration: 0.08s
   position: relative
-
+  min-width: 300px
   &:hover
     transform: scale(1.1)
     border-color: #ccc
@@ -112,7 +137,7 @@ export default {
   display: flex
   flex-direction: column
   transition-duration: .8s
-
+  padding: 3px 0
   &:hover
     > label
       transform: translateX(5px)
@@ -125,8 +150,8 @@ input
   border-bottom: 1px solid var(--border)
   transition-duration: .08s
   color: var(--font)
-  &::placeholder
-    color: var(--font)
+  // &::placeholder
+    // color: var(--font)
 
 label
   padding: 3px 0px 20px 0px
@@ -157,7 +182,7 @@ button
 
 .err
   position: absolute
-  bottom: -120px
+  bottom: -70px
   left: 0
   background-color: #eeffee
   color: red
